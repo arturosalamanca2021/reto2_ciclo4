@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -47,5 +48,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("ide") int id) {
         return service.delete(id);
+    }
+
+    @RequestMapping(value ="/",produces = "application/json")
+    public void getURLValue(HttpServletRequest request){
+        String test = request.getRequestURI();
+        System.out.println("URI TO TEST: " + test);
     }
 }
